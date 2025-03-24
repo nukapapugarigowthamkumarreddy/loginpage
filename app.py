@@ -4,7 +4,7 @@ from flask_jwt_extended import JWTManager, jwt_required, create_access_token, ge
 app = Flask(__name__)
 
 app.config['JWT_SECRET_KEY'] = 'superst'
-app.config["JWT_ACCESS_TOKEN_EXPIRES"] = timedelta(seconds=5)
+app.config["JWT_ACCESS_TOKEN_EXPIRES"] = timedelta(minutes=5)
 
 
 jwt = JWTManager(app)
@@ -32,7 +32,7 @@ def post():
 @jwt_required()
 def protected():
     username = get_jwt_identity()
-    return jsonify(message = f"hello, {username}")
+    return jsonify(message = f"hello, {username}! Nice to mee you")
 
 
 
